@@ -3,14 +3,14 @@ import type { LoginData } from '../interfaces/LoginData';
 import type { RegisterPayload } from '../interfaces/RegisterPayload';
 import { toastService } from './toastService';
 
-const apiClient = axios.create({
-  
-  'baseURL': 'https://sallusagenda.onrender.com',
+const apiBaseUrl = import.meta.env.VITE_API_URL || '';
 
-     headers: {
-         'Content-Type': 'application/json'
-     }
- })
+const apiClient = axios.create({
+  baseURL: apiBaseUrl,
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
 
  export interface HoursRequestDto {
     hours: string[]; 
